@@ -1,10 +1,11 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ScrollView, LayoutAnimation, Item } from "react-native";
 import React, { Component } from "react";
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
 import { ListItem, Button } from "@rneui/themed";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { Text } from "react-native-web";
 import { ScreenWidth } from "@rneui/base";
+import SwipeableFlatList from 'react-native-swipeable-list';
 
 const data = [
   {
@@ -55,6 +56,7 @@ export default class ReminderCard extends Component {
     super();
     this.state = {
       selectedIndex: 0,
+      swiping: false
     };
   }
   render() {
@@ -70,10 +72,12 @@ export default class ReminderCard extends Component {
           }}
         />
         {this.state.selectedIndex == 0 ? <Reminders /> : <Completed />}
+        <SwipeableFlatList  />
       </View>
     );
   }
 }
+
 
 function Reminders() {
   return (
